@@ -9,13 +9,36 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.utils.html import *
-
+from django.core import serializers
+from map.models import *
 
 
 def inicio(request):
 	title = 'RouTrash'
+	print request.method
 	return render_to_response('base.html',locals(), context_instance=RequestContext(request))
 
+
+def save_points_routes(request):
+	if request.is_ajax():
+		if request.method == 'POST':
+			print request.raw_post_data
+
+			## save_point = points.objects.create(route=id,lon=data1,lat=data2)
+	return HttpResponse('OK')		
+
+
+def points_route(request, id):
+	route_selected = routes.objects.get(pk=id)
+	points_receive = points.objects.filter(routes=id)
+	data = serializers.serialize('json', points_receive)
+	return HttpResponse(data, mimetype='application/json')
+
+
+
+
+
+##  User's manager
 
 def ingreso(request):
 	if request.method == 'POST':

@@ -53,22 +53,18 @@
                <input type="password" name='clave' placeholder="Password" class="form-control">
              </div>
              <button type="submit" class="btn btn-success">Entrar</button>
+             <a href = '../../../../register' class="btn btn-success">Registrarse </a>
             </form>
+
           {% endif %}  
 
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3 well mainForm">
-      </div>
-      <div class="col-lg-9 myMap">
         {% block content %}
 
         <div id="map-canvas"></div>
         {% endblock %}
-      </div>
-    </div>
         <footer class="footer navbar-static-bottom">
         <p>&copy; RouTrash 2013 | Hackatón</p>
       </footer>

@@ -13,6 +13,10 @@ urlpatterns = patterns('',
     url(r'^salir', 'map.views.salir', name='salir'),
 
 
+
+
+    url(r'^route/(?P<id>\d+)$', 'map.views.points_route'),
+
     # url(r'^routrash/', include('routrash.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
