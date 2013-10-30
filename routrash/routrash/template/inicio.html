@@ -18,7 +18,6 @@
  
 
 $(document).on('ready',function(){
-var ruta = Array();
 function placeMarker(location)
 {
   pos=ruta.length;
@@ -29,17 +28,6 @@ function placeMarker(location)
 }
 
 
-var latitude=longitude=null;
-
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }
-function showPosition(position)
-  {
-    latitude=position.coords.latitude;
-    longitude=position.coords.longitude; 
-  }
 
 
 

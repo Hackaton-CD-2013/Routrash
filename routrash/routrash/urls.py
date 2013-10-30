@@ -8,11 +8,16 @@ from map import *
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'map.views.inicio', name='home'),
+    url(r'^home', 'map.views.inicio', name='home'),
+    url(r'^login', 'map.views.ingreso', name='login'),
+    url(r'^salir', 'map.views.salir', name='salir'),
+
+
     # url(r'^routrash/', include('routrash.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
 )
