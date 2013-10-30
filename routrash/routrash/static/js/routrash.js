@@ -4,19 +4,33 @@
 $ROUTRASH={};
 
 /**
+ *
+ */
+$ROUTRASH.UI=(function()
+{
+	/**
+	 *
+	 */
+	function _newRoute()
+	{
+		$ROUTRASH.MAPS.listen();		
+	}
+})();
+
+/**
  * Submodulo de maps
  */
 $ROUTRASH.MAPS=(function()
 {
 	/***/
-	var ruta=Array();
-	var rutas=Array();
+	var ruta=Array(), rutas=Array(), pintadas=Array();
+
 
 
 	/**
 	 * Marcado de ruta
 	 */
-	function _listen()
+	function listen()
 	{
 		google.maps.event.addListener(map, 'click', function(event) {
     		_placeMarker(event.latLng);
@@ -30,12 +44,38 @@ $ROUTRASH.MAPS=(function()
     		});
   		});
 	}
-	
 
+	/**
+	 *
+	 */
 	function _placeMarker(location)
 	{
  		pos=ruta.length;
   		ruta[pos]=location;
+	}
+
+	/**
+	 *
+	 */
+	function _showRoutes()
+	{
+		$ROUTRASH.AJAX.getRoutes();
+		if(rutas.length>0)
+		{
+			for (var key in rutas)
+			{
+				pintadas[key]=new google.maps.Polyline({
+        		path: new google.maps.LatLng(rutas[key].latitude,rutas[key].longitude),
+         		map: map,
+         		strokeColor: '#222000',
+         		strokeWeight: 4,
+         		strokeOpacity: 0.6,
+         		clickable: false
+    		});
+				rutas[i]
+			};
+
+		}
 	}
 
 	/**
@@ -55,7 +95,8 @@ $ROUTRASH.MAPS=(function()
 
 	return{
 		init:init,
-		rutas:rutas
+		rutas:rutas,
+		listen:listen
 	};
 })();
 
@@ -73,5 +114,9 @@ $ROUTRASH.AJAX=(function()
 				$ROUTRASH.MAPS.rutas=data;
 			}
 		});
+	}
+
+	return{
+		getRoutes:getRoutes
 	}
 })();
