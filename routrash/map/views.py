@@ -13,4 +13,34 @@ from django.utils.html import *
 
 
 def inicio(request):
-	return render_to_response('inicio.html')
+	title = 'RouTrash'
+	return render_to_response('base.html',locals(), context_instance=RequestContext(request))
+
+
+def ingreso(request):
+	if request.method == 'POST':
+		user = authenticate(username=request.POST.get('user'),password=request.POST.get('clave'))
+		if user is not None:
+			if user.is_active:
+				login(request,user)
+				return HttpResponseRedirect('/')
+			else:
+				estado = 1 # Error no Activo
+		else:
+		 estado = 3 # Usuario no Existe		
+							
+		
+	if estado:
+		if estado == 1:
+			error = 'Este usuario no esta activo si cree que es un error contacte con el administrador.'
+		elif estado == 2: 
+			error = 'Todos los campos son Obligatorios.'
+		elif estado == 3:
+			error = 'Usuario o Contraseña Invalida.'			
+		
+		context = {'title':'RouTrash','error':error}
+		return render_to_response('base.html',context,context_instance=RequestContext(request))
+
+def salir(request):
+	logout(request)
+	return HttpResponseRedirect('../../../../')		
