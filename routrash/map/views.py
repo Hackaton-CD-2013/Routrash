@@ -11,12 +11,21 @@ from django.template import RequestContext
 from django.utils.html import *
 from django.core import serializers
 from map.models import *
+from map.forms import *
+import json
 
 
 def inicio(request):
 	title = 'RouTrash'
 	print request.method
 	return render_to_response('base.html',locals(), context_instance=RequestContext(request))
+
+def register (request):
+	title = 'registro de usuario'
+	formulario = registro()
+	return render_to_response('registro.html',locals(),context_instance=RequestContext(request))
+
+
 
 
 def save_points_routes(request):
@@ -34,7 +43,22 @@ def points_route(request, id):
 	data = serializers.serialize('json', points_receive)
 	return HttpResponse(data, mimetype='application/json')
 
+def points_route_json(request):
+	puntos = {}		
+	rutas = {}
+	routes_all= routes.objects.all()
+	for route in routes_all:
+		points_allone = points.objects.filter(routes_id= route.id)
 
+		for point in points_allone:
+
+			puntos[point.id] = {'longitud':point.lon,'latitude':point.lat}
+
+		rutas[route.name]=puntos
+ 
+	return HttpResponse(json.dumps(rutas), content_type="application/json")
+
+		
 
 
 

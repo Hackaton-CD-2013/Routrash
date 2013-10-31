@@ -33,7 +33,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
+            <li class="active"><a href="../../../../home">Inicio</a></li>
             {% if user.is_authenticated %}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}}<b class="caret"></b></a>
@@ -63,13 +63,14 @@
       </div>
     </div>
         {% block content %}
-
-        <div id="map-canvas"></div>
+          <div id="map-canvas"></div>
         {% endblock %}
         <div class="side"></div>
+        {% block footer %}
         <footer class="footer navbar-static-bottom">
         <p>&copy; RouTrash 2013 | Hackatón</p>
       </footer>
+      {% endblock%}
     </div> <!-- /container -->        
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
