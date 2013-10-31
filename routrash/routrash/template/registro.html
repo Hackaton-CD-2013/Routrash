@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <section id='contenido'>
-	<form id='register' method='POST' action='../../../../usuario/nuevo'>{% csrf_token %}
+	<form id='register' class='col-lg-4 col-lg-offset-4 navbar-inverse'method='POST' action='../../../../usuario/nuevo'>{% csrf_token %}
 		<h2> Datos Personales</h2>
 		{% if error %} 
 			<script>
@@ -10,19 +10,11 @@
 				});
 			</script>
 		{% endif %}
-		<table>
 		{% for campo in formulario%}
-		<tr>
-			<td >{{campo}}</td>
-		</tr>
-		{% endfor %}
-		<tr>
-			<td><input class='btn btn-default' type="submit" value="Crear Usuario" /><br></td>
-		</tr>
-
-
-		</table>
+		{{campo}}<br/>
 		
+		{% endfor %}
+			<input class='btn btn-success btn-lg' type="submit" value="Crear Usuario" /><br></td>
 	</form>
 </section>
 {% endblock %}
