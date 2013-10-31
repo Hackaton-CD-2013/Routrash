@@ -31,6 +31,22 @@ body{
 .row {
 	height: 100%;
 }
+.side
+{
+	width: 20%;
+	height: 100%;
+	float: left;
+	position: absolute;
+	background:black;
+	color: white;
+	padding-left: 1em;
+	padding-top: 1em;
+	padding-right: 1em;
+}
+#guardar
+{
+	margin-left: 15px;
+}
 
 
 
