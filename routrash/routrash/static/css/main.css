@@ -31,6 +31,10 @@ body{
 .row {
 	height: 100%;
 }
+
+#contenido{
+	width:100%;
+}
 .side
 {
 	width: 20%;
@@ -38,19 +42,18 @@ body{
 	float: left;
 	position: absolute;
 	background:black;
+	text-align: center;
 	color: white;
 	padding-left: 1em;
 	padding-top: 1em;
 	padding-right: 1em;
 }
-#guardar
-{
-	margin-left: 15px;
-}
-
 #register {
-	width:50%;
-	margin:0 auto;
+	margin-top:40px;
+	text-align: center;
+	color:#fff;
+	padding:2em ;
+	border-radius:1em;
 }
 
 

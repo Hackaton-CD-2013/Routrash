@@ -34,7 +34,7 @@ $ROUTRASH.UI=(function()
 			e.preventDefault();
 			if(document.getElementById('map-canvas').style.width=='100%' || document.getElementById('map-canvas').style.width=='')
 			{
-				$('.side').append('<p>A partir de ahora puede marcar punto a punto la ruta</p><input type="text" name="nombre" placeholder="Nombre"><textarea placeholder="Descripcion"></textarea><button id="guardar" type="submit" class="btn btn-success">Guardar</button><button id="borrar" type="submit" class="btn btn-warning">Borrar</button>');
+				$('.side').append('<div> <p>A partir de ahora puede marcar punto a punto la ruta</p><br/> <input class="form-control"type="text" name="nombre" placeholder="Nombre"><br/><textarea class="form-control" placeholder="Descripcion"></textarea><br/><input id="guardar" type="submit" class="btn btn-success btn-lg" value="Guardar"/><br/><br/><input id="borrar" type="submit" class="btn btn-danger btn-lg" value="Eliminar"/></div>');
 				$('#map-canvas').css({'float':'right','width':'80%'});
 				_newRoute();
 				_actionsEdit();
@@ -42,7 +42,7 @@ $ROUTRASH.UI=(function()
 			else
 			{
 				$('#map-canvas').css({'float':'','width':'100%'});
-				$('.side').children('p').remove();
+				$('.side').children('div').remove();
 			}
 		});
 		//_showElement(capa=_createElement('div','editar','side','sideMenu'),'');
