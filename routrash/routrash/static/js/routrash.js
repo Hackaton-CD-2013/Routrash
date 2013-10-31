@@ -84,8 +84,8 @@ $ROUTRASH.MAPS=(function()
 {
 	/***/
 	var linea=null;
-	var ruta=Array(), /*rutas=Array(),*/ pintadas=Array();
-	var rutas=[
+	var ruta=Array(), rutas=Array(), pintadas=Array();
+	/*var rutas=[
 	[{
 		latitude:10.490586413467463,
 		longitude:-66.86280369758606
@@ -126,7 +126,7 @@ $ROUTRASH.MAPS=(function()
 {
 	latitude: 10.49010113600426,
 	longitude: -66.85134530067444
-}]];
+}]];*/
 
 
 	/**
@@ -155,7 +155,6 @@ $ROUTRASH.MAPS=(function()
 	function revert()
 	{
 		ruta.splice(ruta.length-1,1);
-		console.log(ruta);
 		_updateLine(ruta);
 	}
 	/**
@@ -170,28 +169,27 @@ $ROUTRASH.MAPS=(function()
 	/**
 	 *
 	 */
-	function _showRoutes()
+	function showRoutes()
 	{
 		$ROUTRASH.AJAX.getRoutes();
-		if(rutas.length>0)
+		console.dir($ROUTRASH.MAPS.rutas);
+		for (var i in rutas)
 		{
-			for (var i=0, j=rutas.length-1; i<=j;i++)
+			una=rutas[i];
+			console.log(rutas);
+			for (var key in una)
 			{
-				una=rutas[i];
-				for (var key in una)
-				{
-					una[key]=new google.maps.LatLng(una[key].latitude,una[key].longitude);
-				}
-				pintadas[i]=new google.maps.Polyline({
-	        		path: una,
-	         		map: map,
-	         		strokeColor: '#222000',
-	         		strokeWeight: 4,
-	         		strokeOpacity: 0.6,
-	         		clickable: false
-    			});
+				una[key]=new google.maps.LatLng(una[key].latitude,una[key].longitude);
 			}
-		};
+			pintadas[i]=new google.maps.Polyline({
+        		path: una,
+         		map: map,
+         		strokeColor: '#222000',
+         		strokeWeight: 4,
+         		strokeOpacity: 0.6,
+         		clickable: false
+			});
+		}
 	}
 
 	/**
@@ -199,14 +197,13 @@ $ROUTRASH.MAPS=(function()
 	 */
 	function init(latitude,longitude)
 	{
-		console.log(latitude);
 		var mapOptions={
 		center: new google.maps.LatLng(latitude,longitude),
 		zoom: 17,
 		mapTypeId: google.maps.MapTypeId.ROADMAPS
 		};
 		map=new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-		_showRoutes();
+		//_showRoutes();
 		$ROUTRASH.UI.showMenu();
 		//_listen();
 	}
@@ -215,7 +212,8 @@ $ROUTRASH.MAPS=(function()
 		init:init,
 		rutas:rutas,
 		listen:listen,
-		revert:revert
+		revert:revert,
+		showRoutes:showRoutes
 	};
 })();
 
@@ -226,8 +224,9 @@ $ROUTRASH.AJAX=(function()
 {
 	function getRoutes()
 	{
+		var rutas;
 		$.ajax({
-			url: "",
+			url: "/routes",
 			success:function(data)
 			{
 				$ROUTRASH.MAPS.rutas=data;
