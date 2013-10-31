@@ -56,6 +56,14 @@ body{
 	border-radius:1em;
 }
 
+#solapa-cerrar{
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 16px 32px 16px 0;
+	border-color: transparent #ff3c00 transparent transparent;
+}
+
 
 
 

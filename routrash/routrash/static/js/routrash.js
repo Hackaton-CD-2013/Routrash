@@ -29,7 +29,7 @@ $ROUTRASH.UI=(function()
 	 */
 	function showMenu()
 	{
-		$('#crear').on('click',function(e)
+		$('.crear').on('click',function(e)
 		{
 			e.preventDefault();
 			if(document.getElementById('map-canvas').style.width=='100%' || document.getElementById('map-canvas').style.width=='')
