@@ -31,7 +31,10 @@ body{
 .row {
 	height: 100%;
 }
-
+#register {
+	width:50%;
+	margin:0 auto;
+}
 
 
 

@@ -11,11 +11,12 @@ urlpatterns = patterns('',
     url(r'^home', 'map.views.inicio', name='home'),
     url(r'^login', 'map.views.ingreso', name='login'),
     url(r'^salir', 'map.views.salir', name='salir'),
-
+	url(r'^register', 'map.views.register', name='register'),
 
 
 
     url(r'^route/(?P<id>\d+)$', 'map.views.points_route'),
+    url(r'^routes', 'map.views.points_route_json'),
 
     # url(r'^routrash/', include('routrash.foo.urls')),
 

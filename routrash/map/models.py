@@ -15,7 +15,8 @@ class points(models.Model):
 	routes = models.ForeignKey(routes)
 	lat = models.CharField(max_length=50, help_text='Latitude')
 	lon = models.CharField(max_length=50, help_text='Longitude')
-
+	def __unicode__(self):
+		return self.id
 
 
 
