@@ -16,5 +16,5 @@
 $(document).on('ready',function(){
 	//Ubicacion en mapa
 	currentLocation();
-
+	$ROUTRASH.MAPS.showRoutes();
 });
