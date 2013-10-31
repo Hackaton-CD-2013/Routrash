@@ -46,6 +46,7 @@ def points_route(request, id):
 def points_route_json(request):
 	puntos = {}		
 	rutas = {}
+	posicion=0
 	routes_all= routes.objects.all()
 	for route in routes_all:
 		points_allone = points.objects.filter(routes_id= route.id)
@@ -54,7 +55,8 @@ def points_route_json(request):
 
 			puntos[point.id] = {'longitud':point.lon,'latitude':point.lat}
 
-		rutas[route.name]=puntos
+		rutas[posicion]=puntos
+		posicion+=1
  
 	return HttpResponse(json.dumps(rutas), content_type="application/json")
 

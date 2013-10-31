@@ -31,10 +31,23 @@ body{
 .row {
 	height: 100%;
 }
+
 #contenido{
 	width:100%;
 }
-
+.side
+{
+	width: 20%;
+	height: 100%;
+	float: left;
+	position: absolute;
+	background:black;
+	text-align: center;
+	color: white;
+	padding-left: 1em;
+	padding-top: 1em;
+	padding-right: 1em;
+}
 #register {
 	margin-top:40px;
 	text-align: center;
